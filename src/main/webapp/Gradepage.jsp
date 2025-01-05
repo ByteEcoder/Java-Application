@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grades</title>
-  <!-- Link to the external CSS file (assuming it's located in the "CSS" folder) -->
-  <link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/cssstyles.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/cssstyles.css">
 </head>
 <body>
   <div class="grades-container">
@@ -16,24 +16,13 @@
         <th>Subject</th>
         <th>Grade</th>
       </tr>
-      <!-- Dynamic content can be added here using JSP tags -->
-      <tr>
-        <td>Math</td>
-        <td>A</td>
-      </tr>
-      <tr>
-        <td>Science</td>
-        <td>B+</td>
-      </tr>
-      <!-- Example of using JSP to loop through a list of subjects/grades -->
-      <%-- 
-      List<Grade> grades = (List<Grade>) request.getAttribute("grades");
-      if (grades != null) {
-          for (Grade grade : grades) {
-              out.print("<tr><td>" + grade.getSubject() + "</td><td>" + grade.getGrade() + "</td></tr>");
-          }
-      }
-      --%>
+      <!-- Dynamic grades data -->
+      <c:forEach var="grade" items="${grades}">
+        <tr>
+          <td>${grade.subject}</td>
+          <td>${grade.grade}</td>
+        </tr>
+      </c:forEach>
     </table>
   </div>
 </body>
