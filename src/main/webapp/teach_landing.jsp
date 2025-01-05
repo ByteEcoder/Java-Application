@@ -5,9 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Attendance & Grade Management</title>
-  <!-- Link to the external CSS file (located in the "CSS" folder) -->
-  <link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/cssstyles.css">
-  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/cssstyles.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -59,7 +57,6 @@
   </table>
 </div>
 
-<!-- Link to external JavaScript file (if needed) -->
-<script src="<%= request.getContextPath() %>/js/script.js"></script>
+<script src="${pageContext.request.contextPath}/js/script.js"></script>
 </body>
 </html>
