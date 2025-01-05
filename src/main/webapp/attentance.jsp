@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Attendance</title>
-  <!-- Link to the external CSS file (assuming it's located in the "CSS" folder) -->
-  <link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/cssstyles.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/cssstyles.css">
 </head>
 <body>
   <div class="attendance-container">
@@ -16,24 +16,13 @@
         <th>Date</th>
         <th>Status</th>
       </tr>
-      <!-- Static attendance data -->
-      <tr>
-        <td>2024-12-01</td>
-        <td>Present</td>
-      </tr>
-      <tr>
-        <td>2024-12-02</td>
-        <td>Absent</td>
-      </tr>
-      <!-- Dynamic attendance data (Optional) -->
-      <%-- 
-      List<Attendance> attendanceList = (List<Attendance>) request.getAttribute("attendanceList");
-      if (attendanceList != null) {
-          for (Attendance attendance : attendanceList) {
-              out.print("<tr><td>" + attendance.getDate() + "</td><td>" + attendance.getStatus() + "</td></tr>");
-          }
-      }
-      --%>
+      <!-- Dynamic attendance data -->
+      <c:forEach var="attendance" items="${attendanceList}">
+        <tr>
+          <td>${attendance.date}</td>
+          <td>${attendance.status}</td>
+        </tr>
+      </c:forEach>
     </table>
   </div>
 </body>
